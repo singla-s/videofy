@@ -15,5 +15,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+input {
+    display: block;
+    width: 75%;
+    margin: auto;
+}
 </style>
