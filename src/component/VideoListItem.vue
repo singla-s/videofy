@@ -17,5 +17,11 @@ export default {
 </script>
 
 <style>
-
+    li {
+        display: flex;
+        cursor: pointer;
+    }
+    li:hover {
+        background-color: #eeeeee;
+    }
 </style>
