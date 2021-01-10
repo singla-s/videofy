@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input/>
+        <input @input = "changeSearchTerm"/>
         <button @click = "onInput" class="btn btn-primary">
             Search
         </button>
@@ -10,9 +10,15 @@
 <script>
 export default {
     name: "SearchBar",
+    data() {
+        return { searchTerm: "" };
+    },
     methods: {
-        onInput: function(event) {
-            this.$emit('newSearch', event.target.value);
+        changeSearchTerm: function(event) {
+            this.searchTerm = event.target.value;
+        },
+        onInput: function() {
+            this.$emit('newSearch', this.searchTerm);
         }
     }
 }
