@@ -1,6 +1,9 @@
 <template>
     <div>
-        <input @input = "onInput"/>
+        <input/>
+        <button @click = "onInput" class="btn btn-primary">
+            Search
+        </button>
     </div>
 </template>
 
@@ -17,8 +20,13 @@ export default {
 
 <style scoped>
 input {
-    display: block;
     width: 75%;
-    margin: auto;
+    margin-left: 10%;
+}
+button {
+    margin: 0 10px;
+    width: 100px;
+    height: 35px;
+    padding-bottom: 33px;
 }
 </style>

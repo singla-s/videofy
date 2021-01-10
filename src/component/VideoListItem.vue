@@ -1,5 +1,5 @@
 <template>
-    <li class="list-group-item">
+    <li class="list-group-item" @click= "selectedVideo">
         <img :src="getThumbnailUrl" />{{video.snippet.title}}
     </li>
 </template>
@@ -10,7 +10,12 @@ export default {
     props: ['video'],
     computed: {
         getThumbnailUrl() {
-            return video.snippet.thumbnails.default.url;
+            return this.video.snippet.thumbnails.default.url;
+        }
+    },
+    methods: {
+        selectedVideo: function() {
+            this.$emit('SelectedVideo', this.video);
         }
     }
 }

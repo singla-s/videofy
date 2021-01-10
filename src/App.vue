@@ -5,7 +5,10 @@
             <SearchBar @newSearch = "onNewSearch"></SearchBar>
         </div>
         <div>
-            <VideoList :videos = 'videos'></VideoList>
+            <VideoDetail v-if="selectedVideo" :selectedVideo = "selectedVideo"></VideoDetail>
+        </div>
+        <div>
+            <VideoList :videos = 'videos' @SelectedVideo = "selectedVideoEvent"></VideoList>
         </div>
     </div>
 </template>
@@ -14,17 +17,21 @@
     import axios from 'axios';
     import SearchBar from './component/SearchBar';
     import VideoList from './component/VideoList';
-    const API_KEY = 'AIzaSyDQPsUczUrmUkBqdHLFWnorH-5LtgrOdg4';
+    import VideoDetail from './component/VideoDetail';
+
+    const API_KEY = 'AIzaSyA4VVORodCybMMVHmCgDonF_FblN3Naq_A';
 
     export default{
         name: "App",
         components: {
             SearchBar,
-            VideoList
+            VideoList,
+            VideoDetail
         },
         data: function(){
               return {
-                  videos: []
+                  videos: [],
+                  selectedVideo: null
                   };
             },
         methods: {
@@ -38,8 +45,10 @@
                 axios.get('https://www.googleapis.com/youtube/v3/search',{params: header})
                 .then((response) => {
                     this.videos = response.data.items;
-                    console.log(this.videos)
                 });
+            },
+            selectedVideoEvent(event) {
+                this.selectedVideo = event;
             }
         }
     };
